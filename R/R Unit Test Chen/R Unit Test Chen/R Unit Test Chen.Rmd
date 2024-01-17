@@ -1,0 +1,62 @@
+---
+title: "R Unit Test Chen"
+output: html_document
+date: "2023-11-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Questions
+
+1. Briefly explain the differences between writing/running code in the Console vs the Source Pane.
+
+Answer: In the console, you would have to run code line by line one at a time, while the source pane is used to run code all at once.
+
+2. What is the main benefit of creating a .Rproj file?
+
+Answer: There are many benefits for creating a .Rproj file including not having to define your working directory every time you open RStudio and by extension saving it easier. You can also change permissions easier in it.
+
+3. Briefly explain the difference between what the “Run” and “Source” bottons do in a R Script file.
+
+Answer: The "Run" button runs the code line by line or whatever you are highlighting, while the "Source" button runs the code all at once from where the file is located.
+
+4. Briefly explain the difference between a matrix and a dataframe
+
+Answer: A matrix is a array of at least 2D with with having the same typing of values, while a dataframe is a list of vectors that make a table.
+
+5. Briefly explain the benefit of assigning variables to the factor type
+
+Answer: By assigning variables to the factor type, you can have labels to each level of a variable.
+
+6. Briefly explain the difference in purpose between the following two lines of code:
+  install.packages("dplyr")
+  library(dplyr)
+
+Answer: The first line of code installs the package and the second line of code loads the package into the file.
+  
+7. Briefly explain what header = TRUE does in the following code:
+  my_data <- read.csv("unittest.csv", header = TRUE)
+
+Answer: The header = TRUE part tells R that the first row of the dataset, in this case unittest.csv, has a header in the file so it will not be included in the data.
+  
+8. Briefly explain the difference in purpose of the train and test datasets when modeling
+
+Answer: The train dataset is for training the model, while the test dataset is for testing the model.
+
+9. Identify two reasons why the following code will not work:
+  mult <- function(x,y)
+  my_temp <- x*y
+  return(my_temp)
+}
+
+new_var <- my_temp + mult(4,5)
+
+Answer: The first reason is that the function is not closed properly with not having a bracket at the start. The second reason is due to the variable my_temp not being properly defined to be used outside of the function.
+
+
+
+
+
+

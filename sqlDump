@@ -1,0 +1,51 @@
+CREATE TABLE firstjoin AS 
+SELECT * FROM SCHEMA_C.USArrests
+INNER JOIN SCHEMA_B.ToothGrowth
+ON USArrests.ID = ToothGrowth.ID;
+
+CREATE TABLE SecondJoin AS
+SELECT * FROM SCHEMA_A.mtcars
+INNER JOIN SCHEMA_B.PlantGrowth
+ON mtcars.wt = PlantGrowth.weight;
+
+SELECT * FROM SCHEMA_A.iris
+LEFT JOIN (
+    SELECT * FROM SCHEMA_C.USArrests
+    INNER JOIN SCHEMA_B.ToothGrowth
+    ON USArrests.ID = ToothGrowth.ID;
+) AS JoinedTables
+ON iris.ID = FirstJoin.ID
+
+SELECT * FROM SCHEMA_A.iris
+LEFT JOIN (
+    SELECT * FROM SCHEMA_C.USArrests
+    INNER JOIN SCHEMA_B.ToothGrowth 
+    ON SCHEMA_C.USArrests.ID = SCHEMA_B.ToothGrowth.ID
+) 
+LEFT JOIN (
+    SELECT *
+    FROM SCHEMA_A.mtcars
+    INNER JOIN SCHEMA_B.PlantGrowth 
+    ON SCHEMA_A.mtcars.wt = SCHEMA_B.PlantGrowth.weight
+)
+
+
+
+CREATE TABLE NewOutputTable AS
+SELECT * FROM (
+    SELECT * FROM SCHEMA_A.iris
+    WHERE "Petal.Length" > 1.5
+) AS FilteredIris
+LEFT JOIN (
+    SELECT * FROM SCHEMA_C.USArrests
+    INNER JOIN SCHEMA_B.ToothGrowth 
+    ON SCHEMA_C.USArrests.ID = SCHEMA_B.ToothGrowth.ID
+) AS JoinedUSArrestsToothGrowth
+ON FilteredIris.ID = JoinedUSArrestsToothGrowth.ID
+LEFT JOIN (
+    SELECT *
+    FROM SCHEMA_A.mtcars
+    INNER JOIN SCHEMA_B.PlantGrowth 
+    ON SCHEMA_A.mtcars.wt = SCHEMA_B.PlantGrowth.weight
+) AS JoinedMtcarsPlantGrowth
+ON FilteredIris.ID = JoinedMtcarsPlantGrowth.ID;
